@@ -1,0 +1,15 @@
+- name: Test storage module
+  hosts: localhost
+  gather_facts: false
+  connection: local
+
+  collections:
+    - google.cloud
+
+  tasks:
+  - name: Upload file to GCP Bucket
+    gcp_storage_object:
+      action: upload
+      bucket: ikanse-tower-test
+      src: "test.zip"
+      auth_kind: serviceaccount
